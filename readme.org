@@ -1,18 +1,35 @@
 #+title: Hw3 Haskell
 
-1. Write the following functions in Haskell and provide a few test cases.
-   1. The pre-defined procedures ~min~ and ~max~ each take two arguments and return the smallest/largest of the two, or the first argument if they are both equal.
+* Question 1
+
+Write the following functions in Haskell and provide a few test cases.
+** Part 1
+The pre-defined procedures ~min~ and ~max~ each take two arguments and return the smallest/largest of the two, or the first argument if they are both equal.
       a. Define ~lmin~ and ~lmax~ which apply these functions to lists of numbers using ~min~ and ~max~
       b. Define ~lmin~ and ~lmax~ _without_ using ~min~ and ~max~.
-   2. Implement ~deepSum~, where given an arbitrarily nested list of numbers in scheme, ~deepSum~ the sum of all the numbers. That is, your input list may have sublists, which may themselves have sublists and so on.
-      a. Haskell has stricter type requirements than Scheme did. How will this function necessarily be different to the implementation in scheme?
+** Part 2
+
+Implement ~deepSum~, where given an instance of ~Nested~, defined below, an arbitrarily nested list of numbers, ~deepSum~ the sum of all the numbers. That is, your input list may have sublists, which may themselves have sublists and so on.
+#+BEGIN_SRC haskell
+data Nested a = Value a | List [NestedList a]
+#+END_SRC
+
+Which can be instantiated as follows:
+#+BEGIN_SRC haskell
+x = (List [Value 3, List [Value 2, Value 3], Value 4])
+#+END_SRC
+
+Implement deepsum on an instance of Nested instead of arbitrarily nested lists.
+      a. Haskell has stricter type requirements than Scheme did. What would be true of nested arrays in Haskell?
       b. Implement the function
-2. Prime numbers
+* Question 2 - Prime numbers
    Write a function with the signature ~Int -> [Int]~ which returns the first ~k~ prime numbers. You may need to implement multiple functions to make this work. Try to make it as efficient as possible (ie, as few unnecessary computations as possible).
    Implement this problem in a separate file.
 
-3. Implement ~mergeSort~ in Haskell. What kinds of values can your function sort?
+* Question 3
+Implement ~mergeSort~ in Haskell. What kinds of values can your function sort?
 
-4. ~nsum L n~ takes in a list ~L~ and a number ~n~ and returns a resulting list where the ~i~ th element is the sum of the elements from position ~i~ to ~min (length L) (i + n)~.
+* Question 4
+~nsum L n~ takes in a list ~L~ and a number ~n~ and returns a resulting list where the ~i~ th element is the sum of the elements from position ~i~ to ~min (length L) (i + n)~.
    For example ~nsum [2, 3, 12, 4] 3~ => ~[17, 19, 16, 4]~
    Implement ~nsum~
