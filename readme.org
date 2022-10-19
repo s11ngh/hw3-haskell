@@ -16,7 +16,7 @@ data NestedList a = Value a | List [NestedList a]
 
 Which can be instantiated as follows:
 #+BEGIN_SRC haskell
-x = (NestedList [Value 3, List [Value 2, Value 3], Value 4])
+x = (NestedList [Value 3, NestedList [Value 2, Value 3], Value 4])
 #+END_SRC
 
 Implement ~deepsum!~ on an instance of ~NestedList~ instead of arbitrarily nested lists.
